@@ -24,10 +24,10 @@ namespace AuthAnySell.Controllers
             var user = await _authService.ConfirmUserAsync(stringConfirm);
             if (user)
             {
-                return Ok("Регистрация успешна");
+                return Ok(true);
             }
 
-            return Ok("Регистрация НЕ успешна");
+            return Ok(false);
         }
 
         [Route("login")]

@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthAnySell", "AuthAnySell\AuthAnySell.csproj", "{DF7AFC12-58E3-473D-BAF8-F98634372E14}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthAnySell", "AuthAnySell\AuthAnySell.csproj", "{DF7AFC12-58E3-473D-BAF8-F98634372E14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth.Business", "Auth.Business\Auth.Business.csproj", "{21067D5D-C260-46EC-A442-679D061645D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth.Business", "Auth.Business\Auth.Business.csproj", "{21067D5D-C260-46EC-A442-679D061645D5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
