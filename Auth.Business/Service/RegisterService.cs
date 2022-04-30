@@ -37,9 +37,10 @@ namespace Auth.Business.Service
                     StringConfirm = StringConfirm
                 });
 
+                var url = "http://localhost:4200/confirm/" + StringConfirm;
                 //ссылка для подтверждения регистрации
-                StringConfirm = "Thanks for signing up with AnySell! You must follow this link to activate your account: \n"+"  https://localhost:44327/api/Auth/Confirm/" + StringConfirm;
-                await _emailSender.SendEmailAsync(email, "Confirm your account on AnySell", StringConfirm); 
+                StringConfirm = $"<div class=\"content\"><p>Thanks for signing up with AnySell! You must follow this link to activate your account: </p><p><a href=\"{url}\" class=\"btn\">Activate your account</a></p></div>";// url;
+                await _emailSender.SendEmailAsync("litvincevaann201190@gmail.com", "Confirm your account on AnySell", StringConfirm); 
 
                 return await _dbContext.SaveChangesAsync() >= 0 ? true : false;
             }
