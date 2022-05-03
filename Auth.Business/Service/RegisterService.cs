@@ -24,14 +24,14 @@ namespace Auth.Business.Service
 
         public async Task<bool> RegisterUserAsync(string email, string password)
         {
-            var user = await _dbContext.Accounts.SingleOrDefaultAsync(u => u.Email == email);
+            var user = await _dbContext.Accounts.SingleOrDefaultAsync(u => u.Email == email.ToLower());
 
             if (user == null)
             {
                 var StringConfirm = GenRandomString();
                 await _dbContext.Accounts.AddAsync(new Account
                 {
-                    Email = email,
+                    Email = email.ToLower(),
                     Password = HashPassword(password),
                     Role = Role.Manager,
                     StringConfirm = StringConfirm

@@ -22,7 +22,7 @@ namespace Auth.Business.Service
         public async Task<Account> AuthenticateUserAsync(string email, string password)
         {
             var hashPassword =  _registerService.HashPassword(password);
-            return await _dbContext.Accounts.SingleOrDefaultAsync(u => u.Email == email && u.Password == hashPassword && u.Confirm == true);
+            return await _dbContext.Accounts.SingleOrDefaultAsync(u => u.Email == email.ToLower() && u.Password == hashPassword && u.Confirm == true);
         }
 
         public async Task<bool> ConfirmUserAsync(string stringConfirm) {
