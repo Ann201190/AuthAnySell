@@ -10,6 +10,7 @@ namespace Auth.Business.Entities
         [EmailAddress]
         public string Email { get; set; }
         [Required]
+        [MinLength(8)]
         public string  Password { get; set; }
         public Role Role { get; set; }
         [Required]

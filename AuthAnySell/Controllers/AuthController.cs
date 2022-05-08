@@ -27,7 +27,7 @@ namespace AuthAnySell.Controllers
                 return Ok(true);
             }
 
-            return Ok(false);
+            return BadRequest(false);
         }
 
         [Route("login")]

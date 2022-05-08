@@ -26,10 +26,10 @@ namespace AuthAnySell.Controllers
             
             if (isRegistr)
             {
-                return Ok("ok");
+                return Ok(true);
             }
 
-            return Ok("error");
+            return BadRequest(false);
         }
 
     }
