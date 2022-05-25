@@ -10,18 +10,18 @@ namespace Auth.Business.Service
     {
 
         private readonly CustomDbContext _dbContext;
-        public readonly IRegisterService _registerService;
-        public AuthService(CustomDbContext dbContext, IRegisterService registerService)
+        public readonly IRegistrationService _registrationService;
+        public AuthService(CustomDbContext dbContext, IRegistrationService registrationService)
         {
             _dbContext = dbContext;
-            _registerService = registerService;
+            _registrationService = registrationService;
             ModelBuilderExtensions.Initialize(dbContext);
             var builder = new DbContextOptionsBuilder<CustomDbContext>();
         }
 
         public async Task<Account> AuthenticateUserAsync(string email, string password)
         {
-            var hashPassword =  _registerService.HashPassword(password);
+            var hashPassword = _registrationService.HashPassword(password);
             return await _dbContext.Accounts.SingleOrDefaultAsync(u => u.Email == email.ToLower() && u.Password == hashPassword && u.Confirm == true);
         }
 

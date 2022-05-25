@@ -15,7 +15,7 @@ namespace Auth.Business
             //Dependency injection:
             services.AddTransient<IAuthService, AuthService>(); 
             services.AddTransient<IJWTService, JWTService>();
-            services.AddTransient<IRegisterService, RegisterService>();
+            services.AddTransient<IRegistrationService, RegistrationService>();
             services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddDbContext<CustomDbContext>(options => options.UseSqlServer(connectStr));
