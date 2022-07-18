@@ -75,10 +75,11 @@ namespace Auth.Business.Service
             var url = "http://localhost:4200/confirm/" + StringConfirm;
 
             //ссылка для подтверждения регистрации
-             StringConfirm = $"<div class=\"content\"><div style=\"padding-top:120px\">Thanks for signing up with AnySell!</div><div>Your login: {email}</div><div>Your password: {password}</div><div> You must follow this link to activate your account.</div><div><a href=\"{url}\"  class=\"btn\">Activate your account</a></div></div>";// url;
-            await _emailSender.SendEmailAsync("litvincevaann201190@gmail.com", "Confirm your account on AnySell", StringConfirm);
+             StringConfirm = $"<div class=\"content\"><h1 class=\"logo\">AnySell</h1><div class=\"info\"><div>Thanks for signing up with AnySell!</div><div>Your login: {email}</div><div>Your password: {password}</div><div> You must follow this link to activate your account.</div><div><a href=\"{url}\" class=\"btn\">Activate your account</a></div></div></div>";
+            await _emailSender.SendEmailAsync("vangogie91@gmail.com", "Confirm your account on AnySell", StringConfirm);
 
-            return await _dbContext.SaveChangesAsync() >= 0 ? true : false;
+            var result = await _dbContext.SaveChangesAsync() >= 0 ? true : false;
+            return result;
         }
 
         public string HashPassword(string password)  // Шифрование пароля для записи в БД
