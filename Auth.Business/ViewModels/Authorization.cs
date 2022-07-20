@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace AuthAnySell.ViewModels
+namespace Auth.Business.ViewModels
 {
     public class Authorization
     {

@@ -17,7 +17,9 @@ namespace Auth.Business
             services.AddTransient<IJWTService, JWTService>();
             services.AddTransient<IRegistrationService, RegistrationService>();
             services.AddTransient<IEmailSender, EmailSender>();
+            services.AddTransient<ICheckService, CheckService>();
 
+           
             services.AddDbContext<CustomDbContext>(options => options.UseSqlServer(connectStr));
         }
     }

@@ -1,5 +1,5 @@
 ﻿using Auth.Business.Service.Interfaces;
-using AuthAnySell.ViewModels;
+using Auth.Business.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -15,7 +15,6 @@ namespace AuthAnySell.Controllers
         {
             _registrationService = registrationService;
         }
-
 
         [Route("registrationmanager")]
         [HttpPost]
@@ -40,8 +39,5 @@ namespace AuthAnySell.Controllers
             }
             return Ok(false);
         }
-
-
-
     }
 }

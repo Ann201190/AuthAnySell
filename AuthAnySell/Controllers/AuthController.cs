@@ -1,5 +1,5 @@
 ﻿using Auth.Business.Service.Interfaces;
-using AuthAnySell.ViewModels;
+using Auth.Business.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
