@@ -1,6 +1,8 @@
 ﻿using Auth.Business.Service.Interfaces;
 using Auth.Business.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace AuthAnySell.Controllers
@@ -10,6 +12,7 @@ namespace AuthAnySell.Controllers
     public class RegistrationController : Controller
     {
         public readonly IRegistrationService _registrationService;
+        private string _userEmail => User.Claims.Single(c => c.Type == ClaimTypes.Email).Value;
 
         public RegistrationController (IRegistrationService registrationService)
         {
@@ -38,6 +41,27 @@ namespace AuthAnySell.Controllers
                 return Ok(true);
             }
             return Ok(false);
+        }
+
+        [Route("changepassword")]
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordModel request)
+        {
+            try
+            {
+                var isChangedPassword = await _registrationService.ChangePassword(_userEmail, request);
+                if (isChangedPassword)
+                {
+                    return Ok(true);
+                }
+                return Ok(false);
+            }
+            catch
+            {
+                return Ok(false);
+            }
+            
+            
         }
     }
 }

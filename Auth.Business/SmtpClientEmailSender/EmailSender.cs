@@ -19,34 +19,22 @@ namespace Auth.Business.SmtpClientEmailSender
         {
             try
             {
-                MailMessage mailMessage = new MailMessage();
+                var mailMessage = new MailMessage();
                 mailMessage.From = new MailAddress(_anySellEmail);
-
-                //receiver email adress
                 mailMessage.To.Add(email);
-
-                //subject of the email
                 mailMessage.Subject = subject;
-
-                //attach the file
-                //mailMessage.Attachments.Add(new Attachment(@"C:\\attachedfile.jpg"));
+                //mailMessage.Attachments.Add(new Attachment(@"C:\\attachedfile.jpg"));//attach the file
                 mailMessage.Body = htmlMessage;
-
                 mailMessage.IsBodyHtml = true;
-
-                //SMTP client
-                SmtpClient smtpClient1 = new SmtpClient("smtp.mail.yahoo.com");
-                //port number for Yahoo
-                smtpClient1.Port = 587;
-                //credentials to login in to yahoo account
-                smtpClient1.Credentials = new NetworkCredential(_anySellEmail, _password);
-                //enabled SSL
-                smtpClient1.EnableSsl = true;
-                //Send an email
-                smtpClient1.Send(mailMessage);
+                
+                var smtpClient = new SmtpClient("smtp.mail.yahoo.com");
+                smtpClient.Port = 587;                                                     //port number for Yahoo
+                smtpClient.Credentials = new NetworkCredential(_anySellEmail, _password);  //credentials to login in to yahoo account
+                smtpClient.EnableSsl = true;
+                smtpClient.Send(mailMessage);
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
                 return false;
             }

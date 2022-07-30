@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using Auth.Business.ViewModels;
+using System.Threading.Tasks;
 
 namespace Auth.Business.Service.Interfaces
 {
@@ -7,5 +8,6 @@ namespace Auth.Business.Service.Interfaces
         Task<bool> RegistrationManagerAsync(string email, string password);
         string HashPassword(string password);
         Task<bool> RegistrationCashierAsync(string email);
+        Task<bool> ChangePassword(string userEmail, ChangePasswordModel request);
     }
 }
