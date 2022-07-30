@@ -59,11 +59,18 @@ namespace AuthAnySell
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "AuthAnySell v1"));
             }
 
+            app.UseCors(options =>
+            {
+                options.AllowAnyMethod()
+                       .AllowAnyHeader()
+                        .AllowAnyOrigin();
+            });
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
 
-            app.UseCors();
+          //  app.UseCors();
 
             app.UseAuthorization();
 
